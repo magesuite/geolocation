@@ -1,0 +1,8 @@
+type Query {
+    countryGeoLocation: CountryGeoLocation @resolver(class: "MageSuite\\Geolocation\\Model\\Resolver\\CountryGeoLocation") @doc(description: "This query returns two letter country ISO code for current user")
+}
+
+type CountryGeoLocation @doc(description: "CountryGeoLocation object") {
+    countryIso: String! @doc(description: "Two letter country ISO code")
+}
+
