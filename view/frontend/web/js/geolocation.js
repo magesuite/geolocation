@@ -29,7 +29,7 @@ define(['jquery', 'mage/url'], function($, urlBuilder) {
             }).then(function(result) {
                 var countryIso = result.data.countryGeoLocation.countryIso;
 
-                sessionStorage.setItem(storageKey, cachedCountryIso);
+                sessionStorage.setItem(storageKey, countryIso);
 
                 return countryIso;
             });
