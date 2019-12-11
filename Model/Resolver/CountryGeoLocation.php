@@ -9,9 +9,18 @@ class CountryGeoLocation implements \Magento\Framework\GraphQl\Query\ResolverInt
      */
     protected $countryResolver;
 
-    public function __construct(\MageSuite\Geolocation\Service\CountryResolverInterface $countryResolver)
+    /**
+     * @var \Magento\Framework\Stdlib\CookieManagerInterface
+     */
+    protected $cookieManager;
+
+    public function __construct(
+        \MageSuite\Geolocation\Service\CountryResolverInterface $countryResolver,
+        \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager
+    )
     {
         $this->countryResolver = $countryResolver;
+        $this->cookieManager = $cookieManager;
     }
 
     /**
@@ -24,6 +33,10 @@ class CountryGeoLocation implements \Magento\Framework\GraphQl\Query\ResolverInt
         array $value = null,
         array $args = null
     ) {
-        return ['countryIso' => $this->countryResolver->resolve()];
+        $countryIso = $this->cookieManager->getCookie('COUNTRY_CODE') ?
+            $this->cookieManager->getCookie('COUNTRY_CODE') :
+            $this->countryResolver->resolve();
+
+        return ['countryIso' => $countryIso];
     }
 }
