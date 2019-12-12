@@ -4,6 +4,8 @@ namespace MageSuite\Geolocation\Model\Resolver;
 
 class CountryGeoLocation implements \Magento\Framework\GraphQl\Query\ResolverInterface
 {
+    const COUNTRY_CODE_MOCK_COOKIE_NAME = 'COUNTRY_CODE';
+    
     /**
      * @var \MageSuite\Geolocation\Service\CountryResolverInterface
      */
@@ -33,8 +35,8 @@ class CountryGeoLocation implements \Magento\Framework\GraphQl\Query\ResolverInt
         array $value = null,
         array $args = null
     ) {
-        $countryIso = $this->cookieManager->getCookie('COUNTRY_CODE') ?
-            $this->cookieManager->getCookie('COUNTRY_CODE') :
+        $countryIso = $this->cookieManager->getCookie(self::COUNTRY_CODE_MOCK_COOKIE_NAME) ?
+            $this->cookieManager->getCookie(self::COUNTRY_CODE_MOCK_COOKIE_NAME) :
             $this->countryResolver->resolve();
 
         return ['countryIso' => $countryIso];
