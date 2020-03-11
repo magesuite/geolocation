@@ -41,7 +41,7 @@ class CountryResolver implements CountryResolverInterface
             $geoIpReader = $this->geoIpReaderFactory->create();
             $record = $geoIpReader->country($ip);
 
-            return $record->country->isoCode;
+            return (string)$record->country->isoCode;
         }
         catch(\Exception $e) {
             $this->logger->error($e->getMessage());
