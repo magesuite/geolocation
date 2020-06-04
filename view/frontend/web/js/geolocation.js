@@ -18,13 +18,7 @@ define(['jquery', 'mage/url'], function($, urlBuilder) {
                 url: graphqlUrl,
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    query: `
-                            {
-                                countryGeoLocation {
-                                    countryIso
-                                }
-                            }
-                        `,
+                    query: '{ countryGeoLocation { countryIso } }',
                 }),
             }).then(function(result) {
                 var countryIso = result.data.countryGeoLocation.countryIso;
