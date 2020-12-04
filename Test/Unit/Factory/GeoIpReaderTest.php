@@ -19,7 +19,7 @@ class GeoIpReaderTest extends \PHPUnit\Framework\TestCase
      */
     protected $databasePathResolver;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->objectManager = \Magento\TestFramework\ObjectManager::getInstance();
 
