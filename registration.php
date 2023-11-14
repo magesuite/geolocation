@@ -5,4 +5,3 @@
     'MageSuite_Geolocation',
     __DIR__
 );
-

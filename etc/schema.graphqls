@@ -5,4 +5,3 @@ type Query {
 type CountryGeoLocation @doc(description: "CountryGeoLocation object") {
     countryIso: String! @doc(description: "Two letter country ISO code")
 }
-

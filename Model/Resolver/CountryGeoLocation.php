@@ -5,7 +5,7 @@ namespace MageSuite\Geolocation\Model\Resolver;
 class CountryGeoLocation implements \Magento\Framework\GraphQl\Query\ResolverInterface
 {
     const COUNTRY_CODE_MOCK_COOKIE_NAME = 'COUNTRY_CODE';
-    
+
     /**
      * @var \MageSuite\Geolocation\Service\CountryResolverInterface
      */
