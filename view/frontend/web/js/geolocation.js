@@ -7,21 +7,18 @@ define(['jquery', 'mage/url'], function($, urlBuilder) {
          * @returns {*}
          */
         getCountryIso: function() {
-            var graphqlUrl = urlBuilder.build('/graphql');
+            var countryIsoEndpoint = urlBuilder.build('rest/V1/geolocation/country/iso');
             var storageKey = 'mgs-geo-location';
             var cachedCountryIso = sessionStorage.getItem(storageKey);
             if (cachedCountryIso) {
                 return $.Deferred().resolve(cachedCountryIso);
             }
 
-            return $.post({
-                url: graphqlUrl,
-                contentType: 'application/json',
-                data: JSON.stringify({
-                    query: '{ countryGeoLocation { countryIso } }',
-                }),
+            return $.get({
+                url: countryIsoEndpoint,
+                dataType: 'json'
             }).then(function(result) {
-                var countryIso = result.data.countryGeoLocation.countryIso;
+                var countryIso = result;
 
                 sessionStorage.setItem(storageKey, countryIso);
 
