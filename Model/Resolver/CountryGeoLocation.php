@@ -32,8 +32,8 @@ class CountryGeoLocation implements \Magento\Framework\GraphQl\Query\ResolverInt
         \Magento\Framework\GraphQl\Config\Element\Field $field,
         $context,
         \Magento\Framework\GraphQl\Schema\Type\ResolveInfo $info,
-        array $value = null,
-        array $args = null
+        ?array $value = null,
+        ?array $args = null
     ) {
         $countryIso = $this->cookieManager->getCookie(self::COUNTRY_CODE_MOCK_COOKIE_NAME) ?
             $this->cookieManager->getCookie(self::COUNTRY_CODE_MOCK_COOKIE_NAME) :
